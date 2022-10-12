@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+# echo $((($(date +%s) - 31536000 + 11644473600) * 10000000))
+# (($(date +%s)) * 10000000) + 11644473600"
+# sudo net ads search '(objectCategory=User)' name lastLogon | tr -d "\n" | sed "s/name: /\n/g" | sed "s/lastLogon://g" | sort
+use POSIX qw( strftime );
+my $list = `sudo net ads search '(objectCategory=User)' name lastLogon`;
+my @list = split("\n", $list);
+
+if (not defined $ARGV[0]) {
+    print "\tUsage: ldu n\n\tn is the number of year from last login.\n\t0 is for never logged.\n ";
+    exit 1;
+}
+
+foreach(@list){
+	if(/name/){
+		$_ =~ s/name: //;
+		$name = $_;
+	}
+	if(/last/){
+		$_ =~ s/lastLogon: //;
+		if(@ARGV[0] != 0){
+			$t = ((time() - (@ARGV[0] * 31536000) + 11644473600) * 10000000);
+		}elsif(@ARGV[0] == 0){
+			$t = 0;
+		}
+		if($_ <= $t && $_ != 0){
+			print $name . " ";
+			print strftime("%Y-%m-%d %H:%M:%S", localtime(($_ / 10000000 ) - 11644473600) );
+			print "\n";
+		}elsif($_ == 0){
+			if(@ARGV[0] == 0){
+				print $name . "\n";
+			}
+		}
+	}
+}
