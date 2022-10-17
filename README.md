@@ -1,7 +1,7 @@
 # MinucciUtilities
 Some CLI utilities for nethserver
 
-_jm_ 	list of machine joined to domain  
+_ljm_ 	list of machine joined to domain  
 
 _ldu_ 	list of domain user  
 
