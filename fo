@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "List open files by users:"
+smbstatus -L | grep DENY_WRITE | awk -F "nethserver" '{print $2}'
+

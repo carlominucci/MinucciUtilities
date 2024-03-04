@@ -5,4 +5,10 @@ _ljm_ 	list of machine joined to domain
 
 _ldu_ 	list of domain user  
 
-_lf_	list of open file  
+_lf_	list of all open file by user domain
+
+_fo_	list of personal open file by user domain
+
+_tu_	top 10 user by space occupation
+
+_lu_	list of logged users

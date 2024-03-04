@@ -1,0 +1,2 @@
+#!/bin/bash
+smbstatus -b | grep "@" | tr "@" " " | awk '{print $2 "\t" $7}' | sort | uniq; 
