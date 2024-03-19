@@ -12,3 +12,5 @@ _fo_	list of personal open file by user domain
 _tu_	top 10 user by space occupation
 
 _lu_	list of logged users
+
+_ts_	top directory in the share order by space occupation
