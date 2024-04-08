@@ -1,0 +1,16 @@
+#!/bin/bash
+
+i=0
+for IP in $(arp -n | grep -v incomplete | grep -v Iface | awk '{print $1}' | sort -V )
+do
+	#echo -ne $IP '\t'
+	if nmap -sn $IP | grep "is up" > /dev/null
+	then
+		echo -e $IP "\tis up"
+		i=$((i + 1))
+	fi
+		
+done
+
+echo $i "hosts up"
+

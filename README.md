@@ -14,3 +14,5 @@ _tu_	top 10 user by space occupation
 _lu_	list of logged users
 
 _ts_	top directory in the share order by space occupation
+
+_hu_	for check the up host in the lan
