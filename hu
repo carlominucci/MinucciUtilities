@@ -6,7 +6,9 @@ do
 	#echo -ne $IP '\t'
 	if nmap -sn $IP | grep "is up" > /dev/null
 	then
-		echo -e $IP "\tis up"
+		#echo -n $IP 
+		nome=$(timeout 1 nmblookup -A $IP | grep ACTIVE | head -1 |tr -d "\t" | tr -d " " | awk -F "<" '{print $1}')
+		echo $IP "	" $nome
 		i=$((i + 1))
 	fi
 		
